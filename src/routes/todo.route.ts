@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { list, createTodo, findTodoById, updateTodo, deleteTodo } from "../business/todo.business";
+import { list, createTodo, findTodoById, updateTodo, deleteTodo } from "../repositories/todo.repository";
 import createHttpError from "http-errors";
 import { TodoCreateSchema, TodoIdSchema } from "../schemas/todo.schema";
 

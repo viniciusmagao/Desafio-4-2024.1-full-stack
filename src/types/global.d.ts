@@ -4,9 +4,3 @@ declare namespace NodeJS {
     PORT: string;
   }
 }
-
-declare namespace Express {
-  interface Request {
-    userId?: number;
-  }
-}
