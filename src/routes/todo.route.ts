@@ -7,14 +7,14 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   // Validate input
-  const { userId } = req;
+  const { id } = req.query;
 
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
+  if (id === undefined) {
+    throw new createHttpError.BadRequest("Missing id query parameter");
   }
 
   // Execute business logic
-  const todos = await list(userId);
+  const todos = await list();
 
   // Send response
   return res.status(200).json(todos);
@@ -23,14 +23,9 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   // Validate input
   const id = TodoIdSchema.parse(req.params.id);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
 
   // Execute business logic
-  const todo = await findTodoById(id, userId);
+  const todo = await findTodoById(id);
 
   if (todo === null) {
     throw new createHttpError.NotFound("Todo not found");
@@ -43,14 +38,9 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   // Validate input
   const { title } = TodoCreateSchema.parse(req.body);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
 
   // Execute business logic
-  const todo = await createTodo({ title }, userId);
+  const todo = await createTodo({ title });
 
   // Send response
   return res.status(201).json(todo);
@@ -60,14 +50,9 @@ router.put("/:id", async (req, res) => {
   // Validate input
   const id = TodoIdSchema.parse(req.params.id);
   const { title } = TodoCreateSchema.parse(req.body);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
 
   // Execute business logic
-  const todo = await updateTodo(id, { title }, userId);
+  const todo = await updateTodo(id, { title });
 
   if (todo === null) {
     throw new createHttpError.NotFound("Todo not found");
@@ -80,14 +65,9 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   // Validate input
   const id = TodoIdSchema.parse(req.params.id);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
 
   // Execute business logic
-  await deleteTodo(id, userId);
+  await deleteTodo(id);
 
   // Send response
   return res.status(204).json();

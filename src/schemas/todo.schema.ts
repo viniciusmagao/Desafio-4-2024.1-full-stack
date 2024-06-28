@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // Schemas
 export const TodoItemSchema = z.object({
-  id: z.number().int().positive(),
+  id: z.coerce.number().int().positive(),
   title: z.string().max(50),
 });
 
