@@ -1,17 +1,42 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
 
-model Todo {
-  id    Int    @id @default(autoincrement()) @db.UnsignedInt
-  title String @db.VarChar(50)
+model Motorista {
+  id            Int       @id @default(autoincrement()) @db.UnsignedInt
+  cpf           String    @unique @db.VarChar(11)
+  nome          String
+  vencimentoCnh DateTime
+  categoriaCnh  String
+  veiculos      Veiculo[]
+  multas        Multa[]
+}
+
+model Veiculo {
+  id          Int       @id @default(autoincrement()) @db.UnsignedInt
+  placa       String    @unique @db.VarChar(7)
+  marca       String
+  modelo      String
+  ano         Int
+  cor         String
+  motoristaId Int
+  motorista   Motorista @relation(fields: [motoristaId], references: [id])
+  multas      Multa[]   // Relação de um veículo com várias multas
+}
+
+model Multa {
+  id          Int       @id @default(autoincrement()) @db.UnsignedInt
+  valor       Float
+  data        DateTime
+  pontos      Int
+  tipo        String
+  veiculoId   Int
+  veiculo     Veiculo   @relation(fields: [veiculoId], references: [id])
+  motoristaId Int       @db.UnsignedInt
+  motorista   Motorista @relation(fields: [motoristaId], references: [id])  // Relação de uma multa com um motorista
 }
