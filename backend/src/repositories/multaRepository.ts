@@ -34,6 +34,12 @@ export const getMultaById = async (id: number) => {
   });
 };
 
+export const getMultasByMotoristaId = async (motoristaId: number) => {
+  return await prisma.multa.findMany({
+    where: { motoristaId },
+  });
+};
+
 export const updateMulta = async (id: number, data: any) => {
   const multaData = {
     valor: data.valor,

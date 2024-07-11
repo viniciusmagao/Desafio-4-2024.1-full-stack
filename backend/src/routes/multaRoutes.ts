@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createMulta, getAllMultas, getMultaById, updateMulta, deleteMulta } from '../repositories/multaRepository';
+import { createMulta, getAllMultas, getMultaById, getMultasByMotoristaId, updateMulta, deleteMulta } from '../repositories/multaRepository';
 
 const router = Router();
 
@@ -36,6 +36,12 @@ router.get('/:id', async (req, res) => {
   } else {
     res.status(404).json({ error: 'Multa não encontrada' });
   }
+});
+
+router.get('/motorista/:motoristaId', async (req, res) => {
+  const motoristaId = parseInt(req.params.motoristaId);
+  const multas = await getMultasByMotoristaId(motoristaId);
+  res.json(multas);
 });
 
 router.put('/:id', async (req, res) => {
