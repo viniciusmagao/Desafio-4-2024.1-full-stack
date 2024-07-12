@@ -19,8 +19,12 @@ const Proprietarios = () => {
     fetchMotoristas();
   }, []);
 
-  const handleVerMultas = (cpf) => {
-    navigate(`/multas/${cpf}`);
+  const handleVerMultas = (id) => {
+    navigate(`/multas/motorista/${id}`);
+  };
+
+  const handleVerVeiculos = (id) => {
+    navigate(`/veiculos/motorista/${id}`);
   };
 
   return (
@@ -31,6 +35,7 @@ const Proprietarios = () => {
       <table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>Nome</th>
             <th>CPF</th>
             <th>Categoria CNH</th>
@@ -43,13 +48,16 @@ const Proprietarios = () => {
         <tbody>
           {motoristas.map((motorista, index) => (
             <tr key={index}>
+              <td>{motorista.id}</td>
               <td>{motorista.nome}</td>
               <td>{motorista.cpf}</td>
               <td>{motorista.categoriaCnh}</td>
               <td>{motorista.vencimentoCnh}</td>
-              <td>{motorista.veiculos}</td>
               <td>
-                <button onClick={() => handleVerMultas(motorista.cpf)}>Ver Multas</button>
+                <button onClick={() => handleVerVeiculos(motorista.id)}>Ver Veículos</button>
+              </td>
+              <td>
+                <button onClick={() => handleVerMultas(motorista.id)}>Ver Multas</button>
               </td>
               <td><button>Editar</button></td>
             </tr>

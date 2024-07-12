@@ -10,6 +10,12 @@ export const getVeiculoById = async (id: number) => {
   return await prisma.veiculo.findUnique({ where: { id } });
 };
 
+export const getVeiculosByMotoristaId = async (motoristaId: number) => {
+  return await prisma.veiculo.findMany({
+    where: { motoristaId },
+  });
+};
+
 export const createVeiculo = async (data: any) => {
   return await prisma.veiculo.create({ data });
 };
