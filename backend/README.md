@@ -9,7 +9,7 @@ Execute o comando:
 
 Você vai precisar criar um arquivo `.env`, altere as informações para o seu usuário e a sua senha:
 
-````
+```
 NODE_ENV=development
 PORT=3000
 DATABASE_URL=mysql://usuário:senha@localhost:3306/detran
