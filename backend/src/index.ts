@@ -10,7 +10,9 @@ import { handleZodError } from "./middlewares/handleZodError.middleware";
 import { handlePrismaError } from "./middlewares/handlePrismaError.middleware";
 import { handleCommonError } from "./middlewares/handleCommonError.middleware";
 
-import todoRoute from "./routes/todo.route";
+import motoristaRoutes from "./routes/motoristaRoutes";
+import veiculoRoutes from "./routes/veiculosRoutes";
+import multaRoutes from "./routes/multaRoutes";
 
 dotenv.config();
 
@@ -20,8 +22,9 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 
-// Include your routes here
-app.use("/todo", todoRoute);
+app.use("/motoristas", motoristaRoutes);
+app.use("/veiculos", veiculoRoutes);
+app.use("/multas", multaRoutes);
 
 app.use(handleZodError);
 app.use(handlePrismaError);

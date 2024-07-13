@@ -1,96 +1,24 @@
-import { Router } from "express";
-import { list, createTodo, findTodoById, updateTodo, deleteTodo } from "../business/todo.business";
-import createHttpError from "http-errors";
-import { TodoCreateSchema, TodoIdSchema } from "../schemas/todo.schema";
+// import express from "express";
+// import { motoristaSchema } from "../schemas/todo.schema";
+// import * as motoristaRepository from "../repositories/motoristaRepository";
 
-const router = Router();
+// const router = express.Router();
 
-router.get("/", async (req, res) => {
-  // Validate input
-  const { userId } = req;
+// router.get("/", async (req, res) => {
+//   const motoristas = await motoristaRepository.getAllMotoristas();
+//   res.json(motoristas);
+// });
 
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
+// router.post("/", async (req, res) => {
+//   try {
+//     const data = motoristaSchema.parse(req.body);
+//     const motorista = await motoristaRepository.createMotorista(data);
+//     res.status(201).json(motorista);
+//   } catch (e) {
+//     res.status(400).json({ error: e.errors });
+//   }
+// });
 
-  // Execute business logic
-  const todos = await list(userId);
+// // Rotas para update, delete, etc.
 
-  // Send response
-  return res.status(200).json(todos);
-});
-
-router.get("/:id", async (req, res) => {
-  // Validate input
-  const id = TodoIdSchema.parse(req.params.id);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
-  // Execute business logic
-  const todo = await findTodoById(id, userId);
-
-  if (todo === null) {
-    throw new createHttpError.NotFound("Todo not found");
-  }
-
-  // Send response
-  return res.status(200).json(todo);
-});
-
-router.post("/", async (req, res) => {
-  // Validate input
-  const { title } = TodoCreateSchema.parse(req.body);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
-  // Execute business logic
-  const todo = await createTodo({ title }, userId);
-
-  // Send response
-  return res.status(201).json(todo);
-});
-
-router.put("/:id", async (req, res) => {
-  // Validate input
-  const id = TodoIdSchema.parse(req.params.id);
-  const { title } = TodoCreateSchema.parse(req.body);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
-  // Execute business logic
-  const todo = await updateTodo(id, { title }, userId);
-
-  if (todo === null) {
-    throw new createHttpError.NotFound("Todo not found");
-  }
-
-  // Send response
-  return res.status(200).json(todo);
-});
-
-router.delete("/:id", async (req, res) => {
-  // Validate input
-  const id = TodoIdSchema.parse(req.params.id);
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
-  // Execute business logic
-  await deleteTodo(id, userId);
-
-  // Send response
-  return res.status(204).json();
-});
-
-export default router;
+// export default router;
