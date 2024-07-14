@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Proprietarios = () => {
   const [motoristas, setMotoristas] = useState([]);
@@ -9,10 +9,10 @@ const Proprietarios = () => {
   useEffect(() => {
     const fetchMotoristas = async () => {
       try {
-        const response = await axios.get('http://localhost:4040/motoristas/');
+        const response = await axios.get("http://localhost:4040/motoristas/");
         setMotoristas(response.data);
       } catch (error) {
-        console.error('Erro ao buscar motoristas:', error);
+        console.error("Erro ao buscar motoristas:", error);
       }
     };
 
@@ -27,11 +27,19 @@ const Proprietarios = () => {
     navigate(`/veiculos/motorista/${id}`);
   };
 
+  const handleEditarMotorista = (id) => {
+    navigate(`/motoristas/editar/${id}`);
+  };
+
+  const handleCriarMotorista = () => {
+    navigate("/motoristas/criar");
+  };
+
   return (
     <div>
       <h1>Bem vindo ao detran</h1>
       <h2>Proprietários</h2>
-      <button>Criar</button>
+      <button onClick={handleCriarMotorista}>Criar</button>
       <table>
         <thead>
           <tr>
@@ -54,12 +62,20 @@ const Proprietarios = () => {
               <td>{motorista.categoriaCnh}</td>
               <td>{motorista.vencimentoCnh}</td>
               <td>
-                <button onClick={() => handleVerVeiculos(motorista.id)}>Ver Veículos</button>
+                <button onClick={() => handleVerVeiculos(motorista.id)}>
+                  Ver Veículos
+                </button>
               </td>
               <td>
-                <button onClick={() => handleVerMultas(motorista.id)}>Ver Multas</button>
+                <button onClick={() => handleVerMultas(motorista.id)}>
+                  Ver Multas
+                </button>
               </td>
-              <td><button>Editar</button></td>
+              <td>
+                <button onClick={() => handleEditarMotorista(motorista.id)}>
+                  Editar
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
