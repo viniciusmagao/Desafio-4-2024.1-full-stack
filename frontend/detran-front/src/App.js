@@ -3,6 +3,7 @@ import Proprietarios from "./components/proprietarios";
 import MultasDetalhes from "./components/multasDetalhes";
 import VeiculosDetalhes from "./components/VeiculosDetalhes";
 import CriarVeiculo from "./components/CriarVeiculos";
+import EditarMotorista from "./components/EditarMotorista";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route
           path="/veiculos/motorista/:motoristaId/criar"
           element={<CriarVeiculo />}
+        />{" "}
+        <Route
+          path="/motoristas/editar/:motoristaId"
+          element={<EditarMotorista />}
         />{" "}
       </Routes>
     </Router>

@@ -1,0 +1,48 @@
+.editar-motorista {
+  margin: 20px;
+}
+
+.editar-motorista h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.editar-motorista form {
+  display: flex;
+  flex-direction: column;
+}
+
+.editar-motorista div {
+  margin-bottom: 10px;
+}
+
+.editar-motorista label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.editar-motorista input {
+  padding: 5px;
+  width: 200px;
+}
+
+.editar-motorista button {
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.atualizar {
+  background-color: #77d8c9;
+}
+
+.voltar-btn {
+  background-color: #6666b8;
+}
+
+.voltar-btn:hover {
+  background-color: #5555a8;
+}
