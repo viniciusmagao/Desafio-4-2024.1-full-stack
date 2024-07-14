@@ -16,9 +16,13 @@ DATABASE_URL=mysql://usuário:senha@localhost:3306/detran
 
 ```
 
-Após isso você vai precisar usar o comando para executar as migrações no Prisma:
+Após isso você vai precisar usar o comando para aplicar as migrações no banco de dados usando o Prisma:
 
 `npx prisma migrate dev --name init`
+
+Após aplicar as migrações, gere o cliente Prisma novamente para garantir que ele está atualizado com as últimas mudanças do schema:
+
+`npx prisma generate`
 
 Após isso será possível executar o sistema com o seguinte comando:
 
