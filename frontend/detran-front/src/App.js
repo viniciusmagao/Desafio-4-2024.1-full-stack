@@ -4,6 +4,7 @@ import MultasDetalhes from "./components/multasDetalhes";
 import VeiculosDetalhes from "./components/VeiculosDetalhes";
 import CriarVeiculo from "./components/CriarVeiculos";
 import EditarMotorista from "./components/EditarMotorista";
+import CriarMotorista from "./components/CriarMotorista";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           path="/motoristas/editar/:motoristaId"
           element={<EditarMotorista />}
         />{" "}
+        <Route path="/motoristas/criar" element={<CriarMotorista />} />{" "}
       </Routes>
     </Router>
   );

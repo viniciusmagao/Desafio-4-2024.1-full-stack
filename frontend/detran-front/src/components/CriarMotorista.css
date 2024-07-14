@@ -1,0 +1,49 @@
+.criar-motorista {
+  margin: 20px;
+}
+
+.criar-motorista h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.criar-motorista form {
+  display: flex;
+  flex-direction: column;
+}
+
+.criar-motorista div {
+  margin-bottom: 10px;
+}
+
+.criar-motorista label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.criar-motorista input {
+  padding: 5px;
+  width: 200px;
+}
+
+.criar-motorista button {
+  background-color: #77d8c9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.criar-motorista button:hover {
+  background-color: #66c7b8;
+}
+
+.voltar-btn {
+  background-color: #6666b8;
+}
+
+.voltar-btn:hover {
+  background-color: #5555a8;
+}

@@ -31,11 +31,15 @@ const Proprietarios = () => {
     navigate(`/motoristas/editar/${id}`);
   };
 
+  const handleCriarMotorista = () => {
+    navigate("/motoristas/criar");
+  };
+
   return (
     <div>
       <h1>Bem vindo ao detran</h1>
       <h2>Proprietários</h2>
-      <button>Criar</button>
+      <button onClick={handleCriarMotorista}>Criar</button>
       <table>
         <thead>
           <tr>
