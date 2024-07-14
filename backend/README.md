@@ -46,6 +46,9 @@ rota
 }
 ```
 
+
+Para a rota de multas é necessário fazer o post das multas vias postman ou thunderclient, afinal no figma não tinha essa opção de cadastro de multas
+
 rota:
 `http://localhost:4040/multas`
 
