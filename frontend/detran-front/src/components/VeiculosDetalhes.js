@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-import './VeiculosDetalhes.css'; // Certifique-se de criar este arquivo CSS
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import "./VeiculosDetalhes.css"; // Certifique-se de criar este arquivo CSS
 
 const VeiculosDetalhes = () => {
   const { motoristaId } = useParams();
@@ -11,10 +11,12 @@ const VeiculosDetalhes = () => {
   useEffect(() => {
     const fetchVeiculos = async () => {
       try {
-        const response = await axios.get(`http://localhost:4040/veiculos/motorista/${motoristaId}`);
+        const response = await axios.get(
+          `http://localhost:4040/veiculos/motorista/${motoristaId}`
+        );
         setVeiculos(response.data);
       } catch (error) {
-        console.error('Erro ao buscar veículos:', error);
+        console.error("Erro ao buscar veículos:", error);
       }
     };
 
@@ -24,8 +26,15 @@ const VeiculosDetalhes = () => {
   return (
     <div className="veiculos-detalhes">
       <h1>Veículos do Motorista ID: {motoristaId}</h1>
-      <button className="voltar-btn" onClick={() => navigate(-1)}>Voltar</button>
-      <button className="criar-btn" onClick={() => navigate('/veiculos/criar')}>Criar</button>
+      <button className="voltar-btn" onClick={() => navigate("/")}>
+        Voltar
+      </button>
+      <button
+        className="criar-btn"
+        onClick={() => navigate(`/veiculos/motorista/${motoristaId}/criar`)}
+      >
+        Criar
+      </button>
       <table>
         <thead>
           <tr>
@@ -47,12 +56,16 @@ const VeiculosDetalhes = () => {
               <td>{veiculo.ano}</td>
               <td>{veiculo.cor}</td>
               <td>
-                <button onClick={() => navigate(`/multas/veiculo/${veiculo.id}`)}>
+                <button
+                  onClick={() => navigate(`/multas/veiculo/${veiculo.id}`)}
+                >
                   <img src="caminho/para/icone-de-multas.png" alt="Multas" />
                 </button>
               </td>
               <td>
-                <button onClick={() => navigate(`/veiculos/editar/${veiculo.id}`)}>
+                <button
+                  onClick={() => navigate(`/veiculos/editar/${veiculo.id}`)}
+                >
                   <img src="caminho/para/icone-de-editar.png" alt="Editar" />
                 </button>
               </td>

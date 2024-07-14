@@ -1,0 +1,40 @@
+.criar-veiculo {
+  margin: 20px;
+}
+
+.criar-veiculo h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.criar-veiculo form {
+  display: flex;
+  flex-direction: column;
+}
+
+.criar-veiculo div {
+  margin-bottom: 10px;
+}
+
+.criar-veiculo label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.criar-veiculo input {
+  padding: 5px;
+  width: 200px;
+}
+
+.criar-veiculo button {
+  background-color: #77d8c9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.criar-veiculo button:hover {
+  background-color: #66c7b8;
+}
