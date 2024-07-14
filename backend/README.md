@@ -11,7 +11,7 @@ Você vai precisar criar um arquivo `.env`, altere as informações para o seu u
 
 ```
 NODE_ENV=development
-PORT=3000
+PORT=4040
 DATABASE_URL=mysql://usuário:senha@localhost:3306/detran
 
 ```
